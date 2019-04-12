@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "indent": [
+      true,
+      "spaces",
+      2
+    ],
+    "await-promise": true
+  }
+}

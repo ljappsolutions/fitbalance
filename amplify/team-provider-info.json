@@ -1,0 +1,21 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "fitbalance-20190408224912-authRole",
+            "UnauthRoleArn": "arn:aws:iam::895647408601:role/fitbalance-20190408224912-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::895647408601:role/fitbalance-20190408224912-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "fitbalance-20190408224912-deployment",
+            "UnauthRoleName": "fitbalance-20190408224912-unauthRole",
+            "StackName": "fitbalance-20190408224912",
+            "StackId": "arn:aws:cloudformation:us-east-1:895647408601:stack/fitbalance-20190408224912/d2199110-5a82-11e9-922e-0a6d3ce3777a"
+        },
+        "categories": {
+            "auth": {
+                "cognito70856d02": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"386975973597-6ilj9hhil5g2pogka05b4e36511u8nnv.apps.googleusercontent.com\",\"client_secret\":\"I6BYt9hTFmqTDRTksagGKjc3\"}]"
+                }
+            }
+        }
+    }
+}
