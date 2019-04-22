@@ -7,6 +7,6 @@ export interface IBlock {
 
 export enum BlockType {
     HIIT = "HIIT",
-    ARMRAP = "ARM RAP",
+    AMRAP = "AMRAP",
     CARDIO = "Cardio",
 }

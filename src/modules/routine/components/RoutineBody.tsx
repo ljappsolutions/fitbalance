@@ -13,6 +13,7 @@ export interface IRoutineBodyProps {
 
 export interface IRoutineBodyState {
   selectedDay: number;
+  selectedPhase: string;
 }
 
 export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBodyState> {
@@ -20,6 +21,7 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
     super(props);
     this.state = {
       selectedDay: 0,
+      selectedPhase: 'phase0',
     };
   }
 
@@ -29,9 +31,15 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
     });
   }
 
+  private phaseChange = (panel: string) => (_event: React.ChangeEvent<{}>, expanded) => {
+    this.setState({
+      selectedPhase: expanded ? panel : '',
+    });
+  };
+
   public render() {
     const { phases } = this.props;
-    const { selectedDay } = this.state;
+    const { selectedDay, selectedPhase } = this.state;
     const totalTime = phases
       .map(x => x.numberOfWeeks)
       .reduce((total, current) => total + current);
@@ -48,33 +56,33 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
         </Grid>
         <Grid container>
           {
-            phases.map((phase, index) => {
+            phases.map((phase, phaseIndex) => {
+              const phaseId: string = `phase${phaseIndex}`;
               return (
-                <Grid container key={`phase${index}`}>
+                <Grid container key={phaseId}>
                   <Grid item xs={12}>
-                    <ExpansionPanel>
+                    <ExpansionPanel expanded={selectedPhase === phaseId} onChange={this.phaseChange(phaseId)}>
                       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        Phase {index + 1} - {phase.numberOfWeeks} weeks
+                        Phase {phaseIndex + 1} - {phase.numberOfWeeks} weeks
                                             </ExpansionPanelSummary>
                       <ExpansionPanelDetails>
                         <Grid container>
                           <Grid item xs={12}>
                             <Tabs variant="fullWidth" value={selectedDay} onChange={this.onDaySelect}>
                               {
-                                phase.dayRoutines.map((dayRoutine, index) => {
+                                phase.dayRoutines.map((dayRoutine) => {
                                   return (
-                                    <Tab key={dayRoutine.dayNumber} label={`Day ${index + 1}`} />
+                                    <Tab key={dayRoutine.dayNumber} label={`Day ${dayRoutine.dayNumber}`} />
                                   )
                                 })
                               }
                             </Tabs>
                           </Grid>
                           {
-                            phase.dayRoutines.map((dayRoutine, index) => {
-                              return (
-                                index === selectedDay ? <DayRoutine key={dayRoutine.dayNumber}
+                            phase.dayRoutines.map((dayRoutine, routineIndex) => {
+                              return selectedPhase === phaseId && routineIndex === selectedDay ?
+                                <DayRoutine key={phaseIndex + '' + routineIndex}
                                   dayRoutine={dayRoutine} /> : null
-                              )
                             })
                           }
                         </Grid>

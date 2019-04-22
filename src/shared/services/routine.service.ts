@@ -2,6 +2,7 @@ import { IRoutine } from "../types/IRoutine";
 import { GoalType } from "../types/IPerson";
 import { BlockType } from "../types/IBlock";
 import { delay } from "q";
+import { TimeUnit } from "../types/IExercise";
 
 export class RoutineService {
     public async getRoutine(email): Promise<IRoutine> {
@@ -23,21 +24,25 @@ export class RoutineService {
                                     type: BlockType.CARDIO,
                                     exercises: [
                                         {
-                                            name: "Treadmill - 10 minutes"
+                                            name: "Treadmill",
+                                            video: '2kqfRN_ALBg',
+                                            time: 10,
+                                            timeUnit: TimeUnit.MINUTES
                                         }
                                     ]
                                 }, {
                                     rounds: 3,
-                                    type: BlockType.ARMRAP,
+                                    type: BlockType.AMRAP,
                                     exercises: [
                                         {
                                             name: 'Pull Over',
                                             reps: 8,
-                                            video: ''
+                                            video: 'tpLnfSQJ0gg',
+                                            weight: 30,
                                         }, {
                                             name: 'Push up',
                                             reps: 8,
-                                            video: ''
+                                            video: 'i9sTjhN4Z3M'
                                         }
                                     ]
                                 }
@@ -52,21 +57,26 @@ export class RoutineService {
                                     type: BlockType.CARDIO,
                                     exercises: [
                                         {
-                                            name: "Elliptical - 10 minutes"
+                                            name: "Elliptical",
+                                            video: 'E15Q3Z9J-Zg',
+                                            time: 15,
+                                            timeUnit: TimeUnit.MINUTES
                                         }
                                     ]
                                 }, {
                                     rounds: 3,
-                                    type: BlockType.ARMRAP,
+                                    type: BlockType.AMRAP,
                                     exercises: [
                                         {
                                             name: 'Curl Bicep',
                                             reps: 8,
-                                            video: ''
+                                            video: 'ykJmrZ5v0Oo',
+                                            weight: 15,
                                         }, {
                                             name: 'Leg Press',
-                                            reps: 8,
-                                            video: ''
+                                            reps: 12,
+                                            video: 'IZxyjW7MPJQ',
+                                            weight: 220,
                                         }
                                     ]
                                 }
@@ -85,21 +95,24 @@ export class RoutineService {
                                     type: BlockType.CARDIO,
                                     exercises: [
                                         {
-                                            name: "Treadmill - 20 minutes"
+                                            name: "Treadmill",
+                                            image: 'https://www.360fitnesssuperstore.com/images/product-images/treadmills/california-fitness/malibu-12t-treadmill.jpg',
+                                            time: 20,
+                                            timeUnit: TimeUnit.MINUTES
                                         }
                                     ]
                                 }, {
                                     rounds: 3,
-                                    type: BlockType.ARMRAP,
+                                    type: BlockType.AMRAP,
                                     exercises: [
                                         {
                                             name: 'Pull Over',
-                                            reps: 10,
-                                            video: ''
+                                            reps: 8,
+                                            video: 'tpLnfSQJ0gg'
                                         }, {
                                             name: 'Push up',
-                                            reps: 10,
-                                            video: ''
+                                            reps: 8,
+                                            video: 'i9sTjhN4Z3M'
                                         }
                                     ]
                                 }
