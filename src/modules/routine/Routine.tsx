@@ -4,6 +4,8 @@ import { Grid } from '@material-ui/core';
 import { RoutineHeader } from "./components/RoutineHeader";
 import { RoutineService } from "../../shared/services/routine.service";
 import { RoutineBody } from "./components/RoutineBody";
+import { ModalProvider } from "../../shared/state/modalProvider";
+import { VideoModal } from "./components/Video";
 
 export interface IRoutineProps {
 }
@@ -39,7 +41,10 @@ export class Routine extends React.Component<IRoutineProps, IRoutineState> {
                     routine && (
                         <Grid className="routine" container={true}>
                             <RoutineHeader person={routine.person} />
-                            <RoutineBody phases={routine.phases} />
+                            <ModalProvider>
+                                <RoutineBody phases={routine.phases} />
+                                <VideoModal />
+                            </ModalProvider>
                         </Grid>
                     )
                 }
