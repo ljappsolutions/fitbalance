@@ -18,7 +18,7 @@ class App extends Component<IAppProps> {
     return (
       <div className="App">
         <Router location={this.props.location} authState={this.props.authState}
-              authData={this.props.authData} />
+          authData={this.props.authData} />
       </div>
     );
   }

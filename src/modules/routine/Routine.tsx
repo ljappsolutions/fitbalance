@@ -26,7 +26,7 @@ export class Routine extends React.Component<IRoutineProps, IRoutineState> {
     }
 
     public async componentDidMount() {
-        const routine = await this.routineService.getRoutine('juanda2003@msn.com');
+        const routine = await this.routineService.getRoutine();
         this.setState({
             routine
         });
