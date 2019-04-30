@@ -10,6 +10,7 @@
     "axios": "^0.18.0",
     "csstype": "^2.6.3",
     "react": "^16.8.6",
+    "react-device-detect": "^1.6.2",
     "react-dom": "^16.8.6",
     "react-router-auth": "^1.0.1",
     "react-router-dom": "^5.0.0",
