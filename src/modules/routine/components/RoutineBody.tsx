@@ -46,20 +46,9 @@ class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBodyState> 
   public render() {
     const { phases, classes } = this.props;
     const { selectedDay, selectedPhase } = this.state;
-    const totalTime = phases
-      .map(x => x.numberOfWeeks)
-      .reduce((total, current) => total + current);
 
     return (
       <>
-        <Grid className="info" container>
-          <Grid item xs={2}>
-            Total Time:
-                </Grid>
-          <Grid item xs={4}>
-            {totalTime} weeks
-                    </Grid>
-        </Grid>
         <Grid container>
           {
             phases.map((phase, phaseIndex) => {

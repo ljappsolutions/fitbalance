@@ -1,13 +1,14 @@
 import React from "react";
-import { IRoutine } from "../../shared/types/IRoutine";
+import { KeyboardBackspace } from '@material-ui/icons';
+import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Grid, WithStyles, withStyles } from '@material-ui/core';
-import { RoutineHeader } from "./components/RoutineHeader";
+import { TextAlignProperty } from 'csstype';
+import { ClipLoader } from 'react-spinners';
+import { IRoutine } from "../../shared/types/IRoutine";
 import { RoutineService } from "../../shared/services/routine.service";
 import RoutineBody from "./components/RoutineBody";
 import { ModalProvider } from "../../shared/state/modalProvider";
 import { VideoModal } from "./components/Video";
-import { KeyboardBackspace } from '@material-ui/icons';
-import { RouteComponentProps, withRouter } from "react-router-dom";
 import routes from "../../Routes";
 
 const styles = {
@@ -20,6 +21,14 @@ const styles = {
             verticalAlign: 'middle',
         }
     },
+    title: {
+        textAlign: 'center' as TextAlignProperty,
+        width: '100%',
+        margin: 5,
+    },
+    loader: {
+        textAlign: 'center' as TextAlignProperty,
+    }
 }
 
 
@@ -28,6 +37,7 @@ export interface IRoutineProps extends WithStyles, RouteComponentProps {
 
 export interface IRoutineState {
     routine: IRoutine | null;
+    loading: boolean;
 }
 
 class Routine extends React.Component<IRoutineProps, IRoutineState> {
@@ -37,13 +47,18 @@ class Routine extends React.Component<IRoutineProps, IRoutineState> {
         super(props);
         this.state = {
             routine: null,
+            loading: false,
         }
         this.routineService = new RoutineService();
     }
 
     public async componentDidMount() {
+        this.setState({
+            loading: true,
+        });
         const routine = await this.routineService.getRoutine();
         this.setState({
+            loading: false,
             routine
         });
     }
@@ -53,9 +68,11 @@ class Routine extends React.Component<IRoutineProps, IRoutineState> {
     }
 
     public render() {
-        const { routine } = this.state;
+        const { routine, loading } = this.state;
         const { classes } = this.props;
-
+        const totalTime = routine ? routine.phases
+            .map(x => x.numberOfWeeks)
+            .reduce((total, current) => total + current) : 0;
         return (
             <>
                 <div>
@@ -70,7 +87,7 @@ class Routine extends React.Component<IRoutineProps, IRoutineState> {
                 {
                     routine && (
                         <Grid className="routine" container={true}>
-                            <RoutineHeader person={routine.person} />
+                            <h2 className={classes.title}>Routine - {totalTime} weeks</h2>
                             <ModalProvider>
                                 <RoutineBody phases={routine.phases} />
                                 <VideoModal />
@@ -80,7 +97,14 @@ class Routine extends React.Component<IRoutineProps, IRoutineState> {
                 }
                 {
                     !routine && (
-                        <h1>No routine created!</h1>
+                        <div className={classes.loader}>
+                            <ClipLoader
+                                sizeUnit={"px"}
+                                size={150}
+                                color={'red'}
+                                loading={loading}
+                            />
+                        </div>
                     )
                 }
             </>
