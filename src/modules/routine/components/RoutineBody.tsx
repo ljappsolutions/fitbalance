@@ -1,13 +1,19 @@
 import React from "react";
 import {
   Grid, ExpansionPanel, ExpansionPanelSummary,
-  ExpansionPanelDetails, Tabs, Tab
+  ExpansionPanelDetails, Tabs, Tab, WithStyles, withStyles
 } from "@material-ui/core";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { IPhase } from "../../../shared/types/IPhase";
 import { DayRoutine } from "./DayRoutine";
 
-export interface IRoutineBodyProps {
+const styles = {
+  accordeon: {
+    margin: '10px 5px',
+  },
+}
+
+export interface IRoutineBodyProps extends WithStyles {
   phases: IPhase[];
 }
 
@@ -16,7 +22,7 @@ export interface IRoutineBodyState {
   selectedPhase: string;
 }
 
-export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBodyState> {
+class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBodyState> {
   constructor(props: IRoutineBodyProps) {
     super(props);
     this.state = {
@@ -38,7 +44,7 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
   };
 
   public render() {
-    const { phases } = this.props;
+    const { phases, classes } = this.props;
     const { selectedDay, selectedPhase } = this.state;
     const totalTime = phases
       .map(x => x.numberOfWeeks)
@@ -59,7 +65,7 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
             phases.map((phase, phaseIndex) => {
               const phaseId: string = `phase${phaseIndex}`;
               return (
-                <Grid container key={phaseId}>
+                <Grid container key={phaseId} className={classes.accordeon}>
                   <Grid item xs={12}>
                     <ExpansionPanel expanded={selectedPhase === phaseId} onChange={this.phaseChange(phaseId)}>
                       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
@@ -98,3 +104,5 @@ export class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBody
     )
   }
 }
+
+export default withStyles(styles)(RoutineBody);

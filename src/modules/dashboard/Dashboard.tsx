@@ -2,6 +2,7 @@ import React from "react";
 import { CardActionArea, CardContent, Card, CardMedia, Typography, WithStyles, withStyles } from "@material-ui/core";
 import routineCard from './routine-card.jpg';
 import { withRouter, RouteComponentProps } from "react-router-dom";
+import routes from "../../Routes";
 
 const styles = {
   card: {
@@ -20,7 +21,7 @@ export interface IDashboardProps extends WithStyles, RouteComponentProps {
 
 class Dashboard extends React.Component<IDashboardProps> {
   private goToRoutine = () => {
-    this.props.history.push('/routine');
+    this.props.history.push(routes.routine);
   }
 
   public render() {

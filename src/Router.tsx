@@ -4,7 +4,7 @@ import { AuthRoute } from 'react-router-auth';
 import routes from './Routes';
 import { SignIn } from './modules/auth/SignIn';
 import { SignOut } from './modules/auth/SignOut';
-import { Routine } from './modules/routine/Routine';
+import Routine from './modules/routine/Routine';
 import Dashboard from './modules/dashboard/Dashboard';
 
 interface IRouterProps {

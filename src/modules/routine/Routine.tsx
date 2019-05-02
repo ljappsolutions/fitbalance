@@ -1,20 +1,36 @@
 import React from "react";
 import { IRoutine } from "../../shared/types/IRoutine";
-import { Grid } from '@material-ui/core';
+import { Grid, WithStyles, withStyles } from '@material-ui/core';
 import { RoutineHeader } from "./components/RoutineHeader";
 import { RoutineService } from "../../shared/services/routine.service";
-import { RoutineBody } from "./components/RoutineBody";
+import RoutineBody from "./components/RoutineBody";
 import { ModalProvider } from "../../shared/state/modalProvider";
 import { VideoModal } from "./components/Video";
+import { KeyboardBackspace } from '@material-ui/icons';
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import routes from "../../Routes";
 
-export interface IRoutineProps {
+const styles = {
+    helpBar: {
+        display: 'flex',
+        padding: '10px 10px',
+        cursor: 'pointer',
+        '& span': {
+            lineHeight: '24px',
+            verticalAlign: 'middle',
+        }
+    },
+}
+
+
+export interface IRoutineProps extends WithStyles, RouteComponentProps {
 }
 
 export interface IRoutineState {
     routine: IRoutine | null;
 }
 
-export class Routine extends React.Component<IRoutineProps, IRoutineState> {
+class Routine extends React.Component<IRoutineProps, IRoutineState> {
     private routineService: RoutineService;
 
     constructor(props: IRoutineProps) {
@@ -32,11 +48,25 @@ export class Routine extends React.Component<IRoutineProps, IRoutineState> {
         });
     }
 
+    private backToDashboard = (): void => {
+        this.props.history.push(routes.dashboard);
+    }
+
     public render() {
         const { routine } = this.state;
+        const { classes } = this.props;
 
         return (
             <>
+                <div>
+                    <div className={classes.helpBar}
+                        onClick={this.backToDashboard}>
+                        <KeyboardBackspace />
+                        <span>
+                            Go Back
+                        </span>
+                    </div>
+                </div>
                 {
                     routine && (
                         <Grid className="routine" container={true}>
@@ -57,3 +87,5 @@ export class Routine extends React.Component<IRoutineProps, IRoutineState> {
         );
     }
 }
+
+export default withStyles(styles)(withRouter(Routine));
