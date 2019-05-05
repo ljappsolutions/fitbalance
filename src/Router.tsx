@@ -6,6 +6,7 @@ import { SignIn } from './modules/auth/SignIn';
 import { SignOut } from './modules/auth/SignOut';
 import Routine from './modules/routine/Routine';
 import Dashboard from './modules/dashboard/Dashboard';
+import Profile from './modules/profile/Profile';
 
 interface IRouterProps {
     location: { pathname: string };
@@ -24,6 +25,7 @@ export default class Router extends React.Component<IRouterProps> {
                 <AuthRoute exact={false} redirectTo={routes.signout} path={routes.signout} component={SignOut} authenticated={isAuthenticated} />
                 <AuthRoute exact={false} redirectTo={routes.root} path={routes.routine} component={Routine} authenticated={isAuthenticated} />
                 <AuthRoute exact={false} redirectTo={routes.root} path={routes.dashboard} component={Dashboard} authenticated={isAuthenticated} />
+                <AuthRoute exact={false} redirectTo={routes.root} path={routes.profile} component={Profile} authenticated={isAuthenticated} />
             </Switch>
         );
     }

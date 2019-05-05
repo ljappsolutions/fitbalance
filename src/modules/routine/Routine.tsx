@@ -1,5 +1,4 @@
 import React from "react";
-import { KeyboardBackspace } from '@material-ui/icons';
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import { Grid, WithStyles, withStyles } from '@material-ui/core';
 import { TextAlignProperty } from 'csstype';
@@ -10,17 +9,9 @@ import RoutineBody from "./components/RoutineBody";
 import { ModalProvider } from "../../shared/state/modalProvider";
 import { VideoModal } from "./components/Video";
 import routes from "../../Routes";
+import PageBar from "../../shared/components/PageBar";
 
 const styles = {
-    helpBar: {
-        display: 'flex',
-        padding: '10px 10px',
-        cursor: 'pointer',
-        '& span': {
-            lineHeight: '24px',
-            verticalAlign: 'middle',
-        }
-    },
     title: {
         textAlign: 'center' as TextAlignProperty,
         width: '100%',
@@ -63,30 +54,19 @@ class Routine extends React.Component<IRoutineProps, IRoutineState> {
         });
     }
 
-    private backToDashboard = (): void => {
-        this.props.history.push(routes.dashboard);
-    }
-
     public render() {
-        const { routine, loading } = this.state;
         const { classes } = this.props;
+        const { routine, loading } = this.state;
         const totalTime = routine ? routine.phases
             .map(x => x.numberOfWeeks)
             .reduce((total, current) => total + current) : 0;
+
         return (
             <>
-                <div>
-                    <div className={classes.helpBar}
-                        onClick={this.backToDashboard}>
-                        <KeyboardBackspace />
-                        <span>
-                            Go Back
-                        </span>
-                    </div>
-                </div>
+                <PageBar redirectRoute={routes.dashboard} />
                 {
                     routine && (
-                        <Grid className="routine" container={true}>
+                        <Grid container={true}>
                             <h2 className={classes.title}>Routine - {totalTime} weeks</h2>
                             <ModalProvider>
                                 <RoutineBody phases={routine.phases} />

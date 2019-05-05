@@ -48,48 +48,46 @@ class RoutineBody extends React.Component<IRoutineBodyProps, IRoutineBodyState> 
     const { selectedDay, selectedPhase } = this.state;
 
     return (
-      <>
-        <Grid container>
-          {
-            phases.map((phase, phaseIndex) => {
-              const phaseId: string = `phase${phaseIndex}`;
-              return (
-                <Grid container key={phaseId} className={classes.accordeon}>
-                  <Grid item xs={12}>
-                    <ExpansionPanel expanded={selectedPhase === phaseId} onChange={this.phaseChange(phaseId)}>
-                      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                        Phase {phaseIndex + 1} - {phase.numberOfWeeks} weeks
+      <Grid container>
+        {
+          phases.map((phase, phaseIndex) => {
+            const phaseId: string = `phase${phaseIndex}`;
+            return (
+              <Grid container key={phaseId} className={classes.accordeon}>
+                <Grid item xs={12}>
+                  <ExpansionPanel expanded={selectedPhase === phaseId} onChange={this.phaseChange(phaseId)}>
+                    <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                      Phase {phaseIndex + 1} - {phase.numberOfWeeks} weeks
                                             </ExpansionPanelSummary>
-                      <ExpansionPanelDetails>
-                        <Grid container>
-                          <Grid item xs={12}>
-                            <Tabs variant="fullWidth" value={selectedDay} onChange={this.onDaySelect}>
-                              {
-                                phase.dayRoutines.map((dayRoutine) => {
-                                  return (
-                                    <Tab key={dayRoutine.dayNumber} label={`Day ${dayRoutine.dayNumber}`} />
-                                  )
-                                })
-                              }
-                            </Tabs>
-                          </Grid>
-                          {
-                            phase.dayRoutines.map((dayRoutine, routineIndex) => {
-                              return selectedPhase === phaseId && routineIndex === selectedDay ?
-                                <DayRoutine key={phaseIndex + '' + routineIndex}
-                                  dayRoutine={dayRoutine} /> : null
-                            })
-                          }
+                    <ExpansionPanelDetails>
+                      <Grid container>
+                        <Grid item xs={12}>
+                          <Tabs variant="fullWidth" value={selectedDay} onChange={this.onDaySelect}>
+                            {
+                              phase.dayRoutines.map((dayRoutine) => {
+                                return (
+                                  <Tab key={dayRoutine.dayNumber} label={`Day ${dayRoutine.dayNumber}`} />
+                                )
+                              })
+                            }
+                          </Tabs>
                         </Grid>
-                      </ExpansionPanelDetails>
-                    </ExpansionPanel>
-                  </Grid>
+                        {
+                          phase.dayRoutines.map((dayRoutine, routineIndex) => {
+                            return selectedPhase === phaseId && routineIndex === selectedDay ?
+                              <DayRoutine key={phaseIndex + '' + routineIndex}
+                                dayRoutine={dayRoutine} /> : null
+                          })
+                        }
+                      </Grid>
+                    </ExpansionPanelDetails>
+                  </ExpansionPanel>
                 </Grid>
-              )
-            })
-          }
-        </Grid>
-      </>
+              </Grid>
+            )
+          })
+        }
+      </Grid>
     )
   }
 }
