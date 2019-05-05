@@ -4,7 +4,7 @@ const environmentHelper = {
       case 'dev':
         return 'http://localhost:4000';
       case 'pre':
-        return '';
+        return 'https://sspyk0d3xh.execute-api.us-east-1.amazonaws.com/dev';
       case 'prod':
         return '';
       default:
