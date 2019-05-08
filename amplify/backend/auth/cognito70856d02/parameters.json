@@ -78,7 +78,5 @@
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid email profile\",\"AttributeMapping\":{\"email\":\"email\",\"family_name\":\"family_name\",\"name\":\"name\",\"username\":\"sub\"}}]",
-    "addLogoutOnUpdate": false,
-    "addCallbackOnUpdate": false,
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/dashboard/\"],\"LogoutURLs\":[\"http://localhost:3000/signout/\"]}"
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"http://localhost:3000/dashboard/\",\"https://d2sth8r0vk541y.cloudfront.net/dashboard/\"],\"LogoutURLs\":[\"http://localhost:3000/signout/\",\"https://d2sth8r0vk541y.cloudfront.net/signout/\"]}"
 }
