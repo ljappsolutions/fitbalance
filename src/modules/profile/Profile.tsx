@@ -6,26 +6,16 @@ import PageBar from "../../shared/components/PageBar";
 import { IPerson } from "../../shared/types/IPerson";
 import { ProfileService } from "../../shared/services/profile.service";
 import { ClipLoader } from "react-spinners";
-import { TextAlignProperty, FontWeightProperty } from "csstype";
+import { TextAlignProperty } from "csstype";
 import { getDateFromEpoch, getFormattedDate } from "../../shared/utils/dateUtils";
 import RevisionList from "./components/RevisionList";
+import { loader, title, label, infoContainer } from "../../shared/styles/common";
 
 const styles = {
-  title: {
-    textAlign: 'center' as TextAlignProperty,
-    width: '100%',
-    margin: 5,
-  },
-  label: {
-    textAlign: 'left' as TextAlignProperty,
-    fontWeight: 'bold' as FontWeightProperty,
-  },
-  infoContainer: {
-    padding: '0 10px',
-  },
-  loader: {
-    textAlign: 'center' as TextAlignProperty,
-  },
+  title,
+  label,
+  infoContainer,
+  loader,
   rightAlign: {
     textAlign: 'right' as TextAlignProperty,
   }

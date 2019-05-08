@@ -1,16 +1,14 @@
 import React from "react";
-import { CardActionArea, CardContent, Card, CardMedia, Typography, WithStyles, withStyles } from "@material-ui/core";
+import { CardActionArea, CardContent, Card, CardMedia, Typography, WithStyles, withStyles, Grid } from "@material-ui/core";
 import routineCard from './routine-card.jpg';
 import profileCard from './profile-card.png';
 import classesCard from './classes-card.jpg';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import routes from "../../Routes";
+import { card } from "../../shared/styles/common";
 
 const styles = {
-  card: {
-    minWidth: 250,
-    margin: '10px 20px',
-  },
+  card,
   media: {
     minHeight: 140,
     maxHeight: 170,
@@ -37,7 +35,7 @@ class Dashboard extends React.Component<IDashboardProps> {
   public render() {
     const { classes } = this.props;
     return (
-      <>
+      <Grid container>
         <Card className={classes.card} onClick={this.goToMyInfo}>
           <CardActionArea>
             <CardMedia
@@ -80,7 +78,7 @@ class Dashboard extends React.Component<IDashboardProps> {
             </CardContent>
           </CardActionArea>
         </Card>
-      </>
+      </Grid>
     );
   }
 }

@@ -10,16 +10,11 @@ import { ModalProvider } from "../../shared/state/modalProvider";
 import { VideoModal } from "./components/Video";
 import routes from "../../Routes";
 import PageBar from "../../shared/components/PageBar";
+import { loader, title } from "../../shared/styles/common";
 
 const styles = {
-    title: {
-        textAlign: 'center' as TextAlignProperty,
-        width: '100%',
-        margin: 5,
-    },
-    loader: {
-        textAlign: 'center' as TextAlignProperty,
-    }
+    title,
+    loader,
 }
 
 

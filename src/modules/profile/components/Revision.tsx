@@ -1,14 +1,12 @@
 import React from "react";
 import { WithStyles, withStyles, Grid } from "@material-ui/core";
 import { IRevision } from "../../../shared/types/IRevision";
-import { TextAlignProperty, FontWeightProperty } from "csstype";
+import { TextAlignProperty } from "csstype";
 import BodyMeasure from "./BodyMeasure";
+import { label } from "../../../shared/styles/common";
 
 const styles = {
-  label: {
-    textAlign: 'left' as TextAlignProperty,
-    fontWeight: 'bold' as FontWeightProperty,
-  },
+  label,
   leftAlign: {
     textAlign: 'left' as TextAlignProperty,
   },

@@ -1,9 +1,10 @@
 import React from "react";
 import { IExercise } from "../../../shared/types/IExercise";
-import { CardContent, Card, Grid, withStyles, StyledComponentProps, WithStyles } from "@material-ui/core";
+import { CardContent, Card, Grid, withStyles, WithStyles } from "@material-ui/core";
 import { TextAlignProperty } from 'csstype';
 import { VideoLibrary } from '@material-ui/icons';
 import { ModalContext } from "../../../shared/state/modalContext";
+import { card } from "../../../shared/styles/common";
 
 const styles = {
   title: {
@@ -18,8 +19,9 @@ const styles = {
   //   width: '1.6em',
   // },
   card: {
-    minWidth: '250px',
-    margin: '5px 20px',
+    ...card,
+    maxWidth: 250,
+    width: undefined,
   },
   videoIcon: {
     marginLeft: '5px',

@@ -1,18 +1,11 @@
-import { WithStyles, withStyles, Grid, Card, CardActionArea, CardContent } from "@material-ui/core";
+import { WithStyles, withStyles, Grid, Card, CardContent } from "@material-ui/core";
 import { IClass } from "../../../shared/types/IClass";
 import React from "react";
-import { TextAlignProperty, FontWeightProperty } from "csstype";
+import { label, card } from "../../../shared/styles/common";
 
 const styles = {
-  card: {
-    minWidth: 250,
-    margin: '5px 20px',
-    width: '100%',
-  },
-  label: {
-    textAlign: 'left' as TextAlignProperty,
-    fontWeight: 'bold' as FontWeightProperty,
-  },
+  card,
+  label,
 }
 
 export interface IClassesListProps extends WithStyles {

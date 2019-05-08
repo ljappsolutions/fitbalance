@@ -4,25 +4,17 @@ import { withRouter, RouteComponentProps } from "react-router-dom";
 import { IClass } from "../../shared/types/IClass";
 import { ClassService } from "../../shared/services/class.service";
 import { ClipLoader } from "react-spinners";
-import { TextAlignProperty } from "csstype";
 import PageBar from "../../shared/components/PageBar";
 import routes from "../../Routes";
 import ClassesList from "./components/ClassesList";
 import _ from "lodash";
 import moment from "moment";
+import { loader, title, infoContainer } from "../../shared/styles/common";
 
 const styles = {
-  loader: {
-    textAlign: 'center' as TextAlignProperty,
-  },
-  title: {
-    textAlign: 'center' as TextAlignProperty,
-    width: '100%',
-    margin: 5,
-  },
-  infoContainer: {
-    padding: '0 10px',
-  },
+  loader,
+  title,
+  infoContainer,
 }
 
 export interface IClassesProps extends WithStyles, RouteComponentProps {

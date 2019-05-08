@@ -138,7 +138,13 @@ Parameters:
       
   hostedUIProviderMeta:
     Type: String
+              
+  addLogoutOnUpdate:
+    Type: String
             
+  addCallbackOnUpdate:
+    Type: String
+          
   hostedUIProviderCreds:
     Type: String
             
