@@ -13,7 +13,7 @@ const environmentHelper = {
   },
   getEnv(): 'dev' | 'pre' | 'prod' {
     const domain = window.location.hostname;
-    const preDomains = ['fitbalance-test']
+    const preDomains = ['fitbalanceroutine.com']
     if (preDomains.some(x => domain.indexOf(x) > -1)) return 'pre';
     else return 'dev';
   }

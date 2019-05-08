@@ -5,6 +5,7 @@ const routes = {
     routine: '/routine',
     dashboard: '/dashboard',
     profile: '/profile',
+    classes: '/classes',
 }
 
 export default routes;

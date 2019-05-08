@@ -2,13 +2,14 @@ import React from "react";
 import { CardActionArea, CardContent, Card, CardMedia, Typography, WithStyles, withStyles } from "@material-ui/core";
 import routineCard from './routine-card.jpg';
 import profileCard from './profile-card.png';
+import classesCard from './classes-card.jpg';
 import { withRouter, RouteComponentProps } from "react-router-dom";
 import routes from "../../Routes";
 
 const styles = {
   card: {
     minWidth: 250,
-    margin: '5px 20px',
+    margin: '10px 20px',
   },
   media: {
     minHeight: 140,
@@ -27,6 +28,10 @@ class Dashboard extends React.Component<IDashboardProps> {
 
   private goToMyInfo = () => {
     this.props.history.push(routes.profile);
+  }
+
+  private goToClasses = () => {
+    this.props.history.push(routes.classes);
   }
 
   public render() {
@@ -57,6 +62,20 @@ class Dashboard extends React.Component<IDashboardProps> {
             <CardContent>
               <Typography gutterBottom variant="h4">
                 Routine
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+        <Card className={classes.card} onClick={this.goToClasses}>
+          <CardActionArea>
+            <CardMedia
+              className={classes.media}
+              image={classesCard}
+              title="Classes"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h4">
+                Classes
               </Typography>
             </CardContent>
           </CardActionArea>
