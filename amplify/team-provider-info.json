@@ -17,5 +17,24 @@
                 }
             }
         }
+    },
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "fitbalance-20190507235330-authRole",
+            "UnauthRoleArn": "arn:aws:iam::895647408601:role/fitbalance-20190507235330-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::895647408601:role/fitbalance-20190507235330-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "fitbalance-20190507235330-deployment",
+            "UnauthRoleName": "fitbalance-20190507235330-unauthRole",
+            "StackName": "fitbalance-20190507235330",
+            "StackId": "arn:aws:cloudformation:us-east-1:895647408601:stack/fitbalance-20190507235330/9b85b220-7155-11e9-a0b8-0a20b68b404c"
+        },
+        "categories": {
+            "auth": {
+                "cognito70856d02": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"386975973597-6ilj9hhil5g2pogka05b4e36511u8nnv.apps.googleusercontent.com\",\"client_secret\":\"I6BYt9hTFmqTDRTksagGKjc3\"}]"
+                }
+            }
+        }
     }
 }
